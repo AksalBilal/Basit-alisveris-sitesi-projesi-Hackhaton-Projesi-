@@ -1,0 +1,47 @@
+﻿@model CodeNight.Models.Tbl_Kullanici
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Giriş</title>
+    <link href="~/smart_store-web_Free04-11-2017_2122350462/web/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/smart_store-web_Free04-11-2017_2122350462/web/css/GirisEkrani.css" rel="stylesheet" />
+</head>
+<body id="LoginForm">
+    <div class="container">
+        <br /><br /><br />
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h2>Admin Login</h2>
+                    <p>Please enter your email and password</p>
+                </div>
+                @using (Html.BeginForm("Login","Security",FormMethod.Post))
+                {
+                    <form id="Login">
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.KullaniciAdi, new { @class = "form-control", placeholder = "Kullanıcı Adı" })
+                            @Html.ValidationMessageFor(m => m.KullaniciAdi)
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Sifre, new { @class = "form-control", placeholder = "Şifre" })
+                            @Html.ValidationMessageFor(m => m.Sifre)
+                        </div>
+                        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                    </form>
+                }
+                <a href="/KullaniciEkle/KullaniciEkle">Üye ol</a>
+                </div>
+        </div>
+    </div><
+
+
+</body>
+</html>
+@section script{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

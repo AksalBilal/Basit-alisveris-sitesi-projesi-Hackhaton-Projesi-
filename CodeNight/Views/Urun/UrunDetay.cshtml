@@ -1,0 +1,87 @@
+﻿@model CodeNight.Models.Tbl_Urun
+@{
+    ViewBag.Title = "UrunDetay";
+    Layout = "~/Views/Shared/_AnaSayfaLayout.cshtml";
+}
+
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&lang=tr-TR" type="text/javascript"></script>
+    <title>Free Smart Store Website Template | Preview :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/slider.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <link href='//fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="main">
+            
+                <div class="section group">
+                    
+
+                        <div class="cont-desc span_1_of_2">
+                            <div class="grid images_3_of_2">
+                                <img src="~/Resimler/@Model.Resim" alt="" />
+                            </div>
+                            <div class="desc span_3_of_2">
+                                <h2>@Model.Adi</h2>
+                                <div class="price">
+                                    <p>Fiyat: <span>@Model.Fiyat</span></p>
+                                </div>
+                                <div class="button btn-s"><span><a href="/Urun/SatinAl/@Model.UrunId">Satın Al</a></span></div>
+                                <div class="button btn-sm"><span><a href="/Urun/FavorilereEkle/@Model.UrunId">Favorilere Ekle</a></span></div>
+
+                            </div>
+                            <div class="product-desc">
+                                <h2>Ürün Açıklaması</h2>
+                                <p>@Model.Aciklama</p>
+                            </div>
+                            <div class="product-tags">
+                                <h2>Ürün Lokasyonu</h2>
+                                <div id="map" style="width:600px; height:500px">
+                                    <script type="text/javascript">
+                                        ymaps.ready(init);
+                                        function init() {
+                                            var myMap = new ymaps.Map('map', {
+                                                center: [@Model.KonumX,@Model.KonumY],
+                                                zoom: 100
+                                            }),
+                                                myPlacemark = new ymaps.Placemark([@Model.KonumX,@Model.KonumY], {
+                                                    content: 'Urun Lokasyonu',
+                                                    balloonContent: 'Urun Konumu'
+                                                });
+                                            myMap.controls
+                                                .add('searchControl', { left: 5, top: 5 })
+                                                .add('smallZoomControl', { left: 5, top: 165 })
+                                                .add('typeSelector')
+                                                .add('mapTools', { left: 5, top: 460 })
+                                                .add('trafficControl', { left: 270, top: 5 });
+                                            myMap.geoObjects.add(myPlacemark);
+                                        }
+                                    </script>
+
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    
+</body>
+</html>
+
+

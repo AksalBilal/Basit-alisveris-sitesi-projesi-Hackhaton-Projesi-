@@ -1,0 +1,49 @@
+﻿@model CodeNight.Models.Tbl_Kullanici
+
+@using (Html.BeginForm("KullaniciEkle", "KullaniciEkle", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            Üye Ol
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Adi)</label>
+                @Html.TextBoxFor(m => m.Adi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Adi)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Soyadi)</label>
+                @Html.TextBoxFor(m => m.Soyadi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Soyadi)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.KullaniciAdi)</label>
+                @Html.TextBoxFor(m => m.KullaniciAdi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.KullaniciAdi)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Sifre)</label>
+                @Html.TextBoxFor(m => m.Sifre, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Sifre)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Telefon)</label>
+                @Html.TextBoxFor(m => m.Telefon, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Telefon)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.Email)</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+
+            <button type="submit" class="btn btn-danger tamamla">Tamamla</button>
+
+        </div>
+    </div>
+}
+
+

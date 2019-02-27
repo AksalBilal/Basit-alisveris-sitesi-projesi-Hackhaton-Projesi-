@@ -1,0 +1,27 @@
+﻿@model IEnumerable<CodeNight.Models.Tbl_Urun>
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/_AnaSayfaLayout.cshtml";
+}
+@using (Html.BeginForm("UrunEkle", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="content_top">
+        <div class="clear"></div>
+    </div>
+    <div class="section group">
+        @foreach (var urun in Model)
+        {
+            if (urun.SatildiMi == false)
+            {
+        <div class="grid_1_of_4 images_1_of_4">
+            <a href="preview-3.html"><img src="~/Resimler/@urun.Resim" alt="" /></a>
+            <h2>@urun.Adi </h2>
+            <p><span class="price">@urun.Fiyat</span></p>
+            <div class="button"><span><a href="/Urun/UrunDetay/@urun.UrunId" class="details">Detay</a></span></div>
+            <div class="button"><span><a href="/Urun/FavorilereEkle/@urun.UrunId" class="details">Favori Ekle</a></span></div>
+        </div>
+            }
+
+        }
+    </div>
+}

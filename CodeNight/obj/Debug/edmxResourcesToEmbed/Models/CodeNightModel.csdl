@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CodeNightModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CodeNightEntities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="Tbl_Favori" EntityType="CodeNightModel.Tbl_Favori" />
+    <EntitySet Name="Tbl_Kategori" EntityType="CodeNightModel.Tbl_Kategori" />
+    <EntitySet Name="Tbl_Kullanici" EntityType="CodeNightModel.Tbl_Kullanici" />
+    <EntitySet Name="Tbl_Mesaj" EntityType="CodeNightModel.Tbl_Mesaj" />
+    <EntitySet Name="Tbl_Mesajlasma" EntityType="CodeNightModel.Tbl_Mesajlasma" />
+    <EntitySet Name="Tbl_Urun" EntityType="CodeNightModel.Tbl_Urun" />
+    <EntitySet Name="Tbl_UrunAl" EntityType="CodeNightModel.Tbl_UrunAl" />
+    <AssociationSet Name="FK_Tbl_Favori_Tbl_Kullanici" Association="CodeNightModel.FK_Tbl_Favori_Tbl_Kullanici">
+      <End Role="Tbl_Kullanici" EntitySet="Tbl_Kullanici" />
+      <End Role="Tbl_Favori" EntitySet="Tbl_Favori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Favori_Tbl_Urun" Association="CodeNightModel.FK_Tbl_Favori_Tbl_Urun">
+      <End Role="Tbl_Urun" EntitySet="Tbl_Urun" />
+      <End Role="Tbl_Favori" EntitySet="Tbl_Favori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Urun_Tbl_Kategori" Association="CodeNightModel.FK_Tbl_Urun_Tbl_Kategori">
+      <End Role="Tbl_Kategori" EntitySet="Tbl_Kategori" />
+      <End Role="Tbl_Urun" EntitySet="Tbl_Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Mesajlasma_Tbl_Kullanici" Association="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici">
+      <End Role="Tbl_Kullanici" EntitySet="Tbl_Kullanici" />
+      <End Role="Tbl_Mesajlasma" EntitySet="Tbl_Mesajlasma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Mesajlasma_Tbl_Kullanici1" Association="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici1">
+      <End Role="Tbl_Kullanici" EntitySet="Tbl_Kullanici" />
+      <End Role="Tbl_Mesajlasma" EntitySet="Tbl_Mesajlasma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Urun_Tbl_Kullanici" Association="CodeNightModel.FK_Tbl_Urun_Tbl_Kullanici">
+      <End Role="Tbl_Kullanici" EntitySet="Tbl_Kullanici" />
+      <End Role="Tbl_Urun" EntitySet="Tbl_Urun" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_UrunAl_Tbl_Kullanici" Association="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici">
+      <End Role="Tbl_Kullanici" EntitySet="Tbl_Kullanici" />
+      <End Role="Tbl_UrunAl" EntitySet="Tbl_UrunAl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_UrunAl_Tbl_Kullanici1" Association="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici1">
+      <End Role="Tbl_Kullanici" EntitySet="Tbl_Kullanici" />
+      <End Role="Tbl_UrunAl" EntitySet="Tbl_UrunAl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_Mesajlasma_Tbl_Mesaj" Association="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Mesaj">
+      <End Role="Tbl_Mesaj" EntitySet="Tbl_Mesaj" />
+      <End Role="Tbl_Mesajlasma" EntitySet="Tbl_Mesajlasma" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tbl_UrunAl_Tbl_Urun" Association="CodeNightModel.FK_Tbl_UrunAl_Tbl_Urun">
+      <End Role="Tbl_Urun" EntitySet="Tbl_Urun" />
+      <End Role="Tbl_UrunAl" EntitySet="Tbl_UrunAl" />
+    </AssociationSet>
+    <FunctionImport Name="urunarama" ReturnType="Collection(CodeNightModel.urunarama_Result)">
+      <Parameter Name="Adi" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="Tbl_Favori">
+    <Key>
+      <PropertyRef Name="FavoriId" />
+    </Key>
+    <Property Name="FavoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciID" Type="Int32" />
+    <Property Name="UrunID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Kullanici" Relationship="CodeNightModel.FK_Tbl_Favori_Tbl_Kullanici" FromRole="Tbl_Favori" ToRole="Tbl_Kullanici" />
+    <NavigationProperty Name="Tbl_Urun" Relationship="CodeNightModel.FK_Tbl_Favori_Tbl_Urun" FromRole="Tbl_Favori" ToRole="Tbl_Urun" />
+  </EntityType>
+  <EntityType Name="Tbl_Kategori">
+    <Key>
+      <PropertyRef Name="KategoriId" />
+    </Key>
+    <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tbl_Urun" Relationship="CodeNightModel.FK_Tbl_Urun_Tbl_Kategori" FromRole="Tbl_Kategori" ToRole="Tbl_Urun" />
+  </EntityType>
+  <EntityType Name="Tbl_Kullanici">
+    <Key>
+      <PropertyRef Name="KullaniciId" />
+    </Key>
+    <Property Name="KullaniciId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KullaniciAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tbl_Favori" Relationship="CodeNightModel.FK_Tbl_Favori_Tbl_Kullanici" FromRole="Tbl_Kullanici" ToRole="Tbl_Favori" />
+    <NavigationProperty Name="Tbl_Mesajlasma" Relationship="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici" FromRole="Tbl_Kullanici" ToRole="Tbl_Mesajlasma" />
+    <NavigationProperty Name="Tbl_Mesajlasma1" Relationship="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici1" FromRole="Tbl_Kullanici" ToRole="Tbl_Mesajlasma" />
+    <NavigationProperty Name="Tbl_Urun" Relationship="CodeNightModel.FK_Tbl_Urun_Tbl_Kullanici" FromRole="Tbl_Kullanici" ToRole="Tbl_Urun" />
+    <NavigationProperty Name="Tbl_UrunAl" Relationship="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici" FromRole="Tbl_Kullanici" ToRole="Tbl_UrunAl" />
+    <NavigationProperty Name="Tbl_UrunAl1" Relationship="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici1" FromRole="Tbl_Kullanici" ToRole="Tbl_UrunAl" />
+  </EntityType>
+  <EntityType Name="Tbl_Mesaj">
+    <Key>
+      <PropertyRef Name="MesajId" />
+    </Key>
+    <Property Name="MesajId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Baslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Icerik" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Tbl_Mesajlasma" Relationship="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Mesaj" FromRole="Tbl_Mesaj" ToRole="Tbl_Mesajlasma" />
+  </EntityType>
+  <EntityType Name="Tbl_Mesajlasma">
+    <Key>
+      <PropertyRef Name="MesajlasmaId" />
+    </Key>
+    <Property Name="MesajlasmaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MesajID" Type="Int32" />
+    <Property Name="GonderenKullaniciID" Type="Int32" />
+    <Property Name="AlanKullaniciID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Kullanici" Relationship="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici" FromRole="Tbl_Mesajlasma" ToRole="Tbl_Kullanici" />
+    <NavigationProperty Name="Tbl_Kullanici1" Relationship="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici1" FromRole="Tbl_Mesajlasma" ToRole="Tbl_Kullanici" />
+    <NavigationProperty Name="Tbl_Mesaj" Relationship="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Mesaj" FromRole="Tbl_Mesajlasma" ToRole="Tbl_Mesaj" />
+  </EntityType>
+  <EntityType Name="Tbl_Urun">
+    <Key>
+      <PropertyRef Name="UrunId" />
+    </Key>
+    <Property Name="UrunId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KategoriID" Type="Int32" />
+    <Property Name="Fiyat" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Aciklama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Resim" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="SatildiMi" Type="Boolean" />
+    <Property Name="KullaniciID" Type="Int32" />
+    <Property Name="Tarih" Type="DateTime" Precision="3" />
+    <Property Name="KonumX" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="KonumY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tbl_Favori" Relationship="CodeNightModel.FK_Tbl_Favori_Tbl_Urun" FromRole="Tbl_Urun" ToRole="Tbl_Favori" />
+    <NavigationProperty Name="Tbl_Kategori" Relationship="CodeNightModel.FK_Tbl_Urun_Tbl_Kategori" FromRole="Tbl_Urun" ToRole="Tbl_Kategori" />
+    <NavigationProperty Name="Tbl_Kullanici" Relationship="CodeNightModel.FK_Tbl_Urun_Tbl_Kullanici" FromRole="Tbl_Urun" ToRole="Tbl_Kullanici" />
+    <NavigationProperty Name="Tbl_UrunAl" Relationship="CodeNightModel.FK_Tbl_UrunAl_Tbl_Urun" FromRole="Tbl_Urun" ToRole="Tbl_UrunAl" />
+  </EntityType>
+  <EntityType Name="Tbl_UrunAl">
+    <Key>
+      <PropertyRef Name="UrunAlId" />
+    </Key>
+    <Property Name="UrunAlId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KullaniciID" Type="Int32" />
+    <Property Name="UrunID" Type="Int32" />
+    <NavigationProperty Name="Tbl_Kullanici" Relationship="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici" FromRole="Tbl_UrunAl" ToRole="Tbl_Kullanici" />
+    <NavigationProperty Name="Tbl_Kullanici1" Relationship="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici1" FromRole="Tbl_UrunAl" ToRole="Tbl_Kullanici" />
+    <NavigationProperty Name="Tbl_Urun" Relationship="CodeNightModel.FK_Tbl_UrunAl_Tbl_Urun" FromRole="Tbl_UrunAl" ToRole="Tbl_Urun" />
+  </EntityType>
+  <Association Name="FK_Tbl_Favori_Tbl_Kullanici">
+    <End Type="CodeNightModel.Tbl_Kullanici" Role="Tbl_Kullanici" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Favori" Role="Tbl_Favori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanici">
+        <PropertyRef Name="KullaniciId" />
+      </Principal>
+      <Dependent Role="Tbl_Favori">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Favori_Tbl_Urun">
+    <End Type="CodeNightModel.Tbl_Urun" Role="Tbl_Urun" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Favori" Role="Tbl_Favori" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Urun">
+        <PropertyRef Name="UrunId" />
+      </Principal>
+      <Dependent Role="Tbl_Favori">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Urun_Tbl_Kategori">
+    <End Type="CodeNightModel.Tbl_Kategori" Role="Tbl_Kategori" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Urun" Role="Tbl_Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Tbl_Urun">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Mesajlasma_Tbl_Kullanici">
+    <End Type="CodeNightModel.Tbl_Kullanici" Role="Tbl_Kullanici" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Mesajlasma" Role="Tbl_Mesajlasma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanici">
+        <PropertyRef Name="KullaniciId" />
+      </Principal>
+      <Dependent Role="Tbl_Mesajlasma">
+        <PropertyRef Name="GonderenKullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Mesajlasma_Tbl_Kullanici1">
+    <End Type="CodeNightModel.Tbl_Kullanici" Role="Tbl_Kullanici" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Mesajlasma" Role="Tbl_Mesajlasma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanici">
+        <PropertyRef Name="KullaniciId" />
+      </Principal>
+      <Dependent Role="Tbl_Mesajlasma">
+        <PropertyRef Name="AlanKullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Urun_Tbl_Kullanici">
+    <End Type="CodeNightModel.Tbl_Kullanici" Role="Tbl_Kullanici" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Urun" Role="Tbl_Urun" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanici">
+        <PropertyRef Name="KullaniciId" />
+      </Principal>
+      <Dependent Role="Tbl_Urun">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_UrunAl_Tbl_Kullanici">
+    <End Type="CodeNightModel.Tbl_Kullanici" Role="Tbl_Kullanici" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_UrunAl" Role="Tbl_UrunAl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanici">
+        <PropertyRef Name="KullaniciId" />
+      </Principal>
+      <Dependent Role="Tbl_UrunAl">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_UrunAl_Tbl_Kullanici1">
+    <End Type="CodeNightModel.Tbl_Kullanici" Role="Tbl_Kullanici" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_UrunAl" Role="Tbl_UrunAl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Kullanici">
+        <PropertyRef Name="KullaniciId" />
+      </Principal>
+      <Dependent Role="Tbl_UrunAl">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_Mesajlasma_Tbl_Mesaj">
+    <End Type="CodeNightModel.Tbl_Mesaj" Role="Tbl_Mesaj" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_Mesajlasma" Role="Tbl_Mesajlasma" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Mesaj">
+        <PropertyRef Name="MesajId" />
+      </Principal>
+      <Dependent Role="Tbl_Mesajlasma">
+        <PropertyRef Name="MesajID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tbl_UrunAl_Tbl_Urun">
+    <End Type="CodeNightModel.Tbl_Urun" Role="Tbl_Urun" Multiplicity="0..1" />
+    <End Type="CodeNightModel.Tbl_UrunAl" Role="Tbl_UrunAl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Urun">
+        <PropertyRef Name="UrunId" />
+      </Principal>
+      <Dependent Role="Tbl_UrunAl">
+        <PropertyRef Name="UrunID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="urunarama_Result">
+    <Property Type="Int32" Name="UrunId" Nullable="false" />
+    <Property Type="String" Name="Adi" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Marka" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="KategoriID" Nullable="true" />
+    <Property Type="Decimal" Name="Fiyat" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Aciklama" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Resim" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="SatildiMi" Nullable="true" />
+    <Property Type="Int32" Name="KullaniciID" Nullable="true" />
+    <Property Type="DateTime" Name="Tarih" Nullable="true" Precision="23" />
+    <Property Type="String" Name="KonumX" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KonumY" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>

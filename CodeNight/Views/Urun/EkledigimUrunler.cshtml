@@ -1,0 +1,21 @@
+﻿@model IEnumerable<CodeNight.Models.Tbl_Urun>
+@{
+    ViewBag.Title = "Eklediğim Ürünler";
+    Layout = "~/Views/Shared/_AnaSayfaLayout.cshtml";
+}
+
+<h2>Eklediğim Ürünler</h2>
+<div class="section group">
+    @foreach (var urun in Model)
+    {
+
+        <div class="grid_1_of_4 images_1_of_4">
+            <a href="preview-3.html"><img src="~/Resimler/@urun.Resim" alt="" /></a>
+            <h2>@urun.Adi </h2>
+            <p><span class="price">@urun.Fiyat</span></p>
+            <div class="button"><span><a href="/Urun/UrunDetay/@urun.UrunId" class="details">Detay</a></span></div>
+
+        </div>
+
+    }
+</div>

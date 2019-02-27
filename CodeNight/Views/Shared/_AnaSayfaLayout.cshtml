@@ -1,0 +1,90 @@
+﻿<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Free Smart Store Website Template | Home :: w3layouts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="~/smart_store-web_Free04-11-2017_2122350462/web/css/style.css" rel="stylesheet" />
+    <link href="~/smart_store-web_Free04-11-2017_2122350462/web/css/menu.css" rel="stylesheet" />
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/jquery.min.js"></script>
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/script.js"></script>
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/move-top.js"></script>
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/easing.js"></script>
+    <link href="~/smart_store-web_Free04-11-2017_2122350462/web/css/bootstrap.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Monda' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Doppio+One' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="header_top">
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                </div>
+                <div class="header_top_right">
+                    <div class="search_box">
+                        @using (Html.BeginForm("UrunArama", "Urun", FormMethod.Get))
+                        {
+                            @Html.TextBox("q",null,htmlAttributes: new {@class= "form-group" })
+
+                            <button class="btn btn-success" type="submit">Ara</button>
+
+                        }
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="container">
+                @Html.Partial("_Header")
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="container">
+                @RenderBody()
+            </div>
+        </div>
+        <div class="footer">
+            @Html.Partial("_Footer")
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                    containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+                };
+            */
+
+            $().UItoTop({ easingType: 'easeOutQuart' });
+
+        });</script>
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+    <link href="~/smart_store-web_Free04-11-2017_2122350462/web/css/flexslider.css" rel="stylesheet" />
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/jquery.flexslider.js"></script>
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/bootstrap.js"></script>
+    <script src="~/smart_store-web_Free04-11-2017_2122350462/web/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            SyntaxHighlighter.all();
+        });
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function (slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });</script>
+</body>
+</html>
+

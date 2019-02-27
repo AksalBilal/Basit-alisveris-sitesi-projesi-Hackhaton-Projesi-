@@ -1,0 +1,99 @@
+﻿@model CodeNight.ModelView.UrunAlModelView
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_AnaSayfaLayout.cshtml";
+}
+
+<script>
+    $(document).ready(function () {
+        var x = document.getElementById("urun_KonumX");
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+
+
+        function showPosition(position) {
+            $("#urun_KonumX").val(position.coords.latitude);
+        }
+
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var y = document.getElementById("urun_KonumY");
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            y.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+
+        function showPosition(position) {
+            $("#urun_KonumY").val(position.coords.longitude);
+        }
+
+    });
+</script>
+
+<p style="color:red">@ViewBag.Hata</p>
+@using (Html.BeginForm("UrunEkle", "Urun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="panel panel-danger">
+        <div class="panel-heading">
+            Ürün Al
+        </div>
+        <div class="panel-body">
+
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.urun.Adi)</label>
+                @Html.TextBoxFor(m => m.urun.Adi, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.Adi)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.urun.Marka)</label>
+                @Html.TextBoxFor(m => m.urun.Marka, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.Marka)
+            </div>
+            <div class="form-group" id="kategori">
+                <label>@Html.LabelFor(m => m.urun.KategoriID)</label>
+                @Html.DropDownListFor(m => m.urun.KategoriID, new SelectList(Model.Kategoriler, "KategoriId", "Adi"), "Kategori Seçiniz", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.KategoriID)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.urun.Fiyat)</label>
+                @Html.TextBoxFor(m => m.urun.Fiyat, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.Fiyat)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.urun.Aciklama)</label>
+                @Html.TextAreaFor(m => m.urun.Aciklama, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.Aciklama)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.urun.KonumX)</label>
+                @Html.TextBoxFor(m => m.urun.KonumX, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.KonumX)
+            </div>
+            <div class="form-group">
+                <label>@Html.LabelFor(m => m.urun.KonumY)</label>
+                @Html.TextBoxFor(m => m.urun.KonumY, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.urun.KonumY)
+            </div>
+
+            <label>@Html.LabelFor(m => m.urun.Resim)</label>
+
+            <label for="file">Upload Image:</label>
+            <input type="file" name="file" id="file" style="width: 100%;" />
+
+
+
+            <input type="submit" value="Upload" class="submit" />
+
+        </div>
+    </div>
+}

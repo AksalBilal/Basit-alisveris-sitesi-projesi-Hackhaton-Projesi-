@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12827390ab8042b7b18242c4b28bd9cf" Name="Diagram1">
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_Favori" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_Kategori" Width="1.5" PointX="3.75" PointY="8.5" />
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_Kullanici" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_Mesaj" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_Mesajlasma" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_Urun" Width="1.5" PointX="6" PointY="4.25" />
+        <EntityTypeShape EntityType="CodeNightModel.Tbl_UrunAl" Width="1.5" PointX="8.25" PointY="5.25" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Favori_Tbl_Kullanici" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Favori_Tbl_Urun" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Urun_Tbl_Kategori" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Kullanici1" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Urun_Tbl_Kullanici" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_UrunAl_Tbl_Kullanici1" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_Mesajlasma_Tbl_Mesaj" />
+        <AssociationConnector Association="CodeNightModel.FK_Tbl_UrunAl_Tbl_Urun" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
